@@ -1,0 +1,41 @@
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<title>Change an element class with javascript</title> 
+		<style type="text/css"> 
+			.default{ 
+				background-color: red; 
+			} 
+			.changedClass{ 
+				background-color: green; 
+			} 
+			#myPara{ 
+				margin-top: 20px; 
+			} 
+			#myButton{ 
+				padding: 10px; 
+			} 
+			body { 
+				text-align:center; 
+			} 
+			h1 { 
+				color:green; 
+			} 
+		</style> 
+		<script type="text/javascript"> 
+			function changeClass() { 
+				document.getElementById('myButton').className = "changedClass"; 
+				var button_class = document.getElementById('myButton').className; 
+				document.getElementById('myPara').innerHTML = "New class name: " 
+				+ button_class; 
+			} 
+		</script> 
+	</head> 
+	<body> 
+		<h1>GeeksforGeeks</h1> 
+		<h2>Chenge class name of element</h2> 
+		<button class="default" onclick="changeClass()"
+					id="myButton">Click Here!</button><br> 
+		<p id="myPara">Old class name: default</p> 
+	</body> 
+</html>					 

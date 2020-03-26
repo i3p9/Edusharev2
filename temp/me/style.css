@@ -1,0 +1,79 @@
+   body {
+     /*animation: colorchange 50s; /* much cleaner approach, hacky one didnt work well for mobile*/
+     /*-webkit-animation: colorchange 50s;*/
+     background-image: linear-gradient(to right top, #240b36, #4d0845, #780049, #a10043, #c31432);
+     background-image: -webkit-linear-gradient(top right, #240b36, #4d0845, #780049, #a10043, #c31432);
+   }
+
+   a:link {
+     color: #D3D3D3;
+   }
+
+   a:visited {
+     color: white;
+   }
+
+   a:hover {
+     color: hotpink;
+   }
+
+   a:active {
+     color: #FFFFFF;
+   }
+
+   @keyframes colorchange {
+     0% {
+       background: red;
+     }
+
+     25% {
+       background: yellow;
+     }
+
+     50% {
+       background: blue;
+     }
+
+     75% {
+       background: green;
+     }
+
+     100% {
+       background: red;
+     }
+   }
+
+   @-webkit-keyframes colorchange
+
+   /* just in case */
+     {
+     0% {
+       background: red;
+     }
+
+     25% {
+       background: yellow;
+     }
+
+     50% {
+       background: blue;
+     }
+
+     75% {
+       background: green;
+     }
+
+     100% {
+       background: red;
+     }
+   }
+
+   #center {
+     font-family: 'Roboto Slab', serif;
+     font-size: 17px;
+     position: absolute;
+     color: white;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+   }

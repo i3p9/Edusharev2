@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Dosis|Montserrat|Six+Caps|Source+Code+Pro&display=swap" rel="stylesheet">
+    <title>Art</title>
+</head>
+
+<body>
+    <div class="header">
+        <a href="#default" class="title">Fahim's Page</a>
+        <div class="header-right">
+            <a href="index.html">Home</a>
+            <a class="active" href="art.html">Art</a>
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col">
+            <img src="em1.jpg" alt="TakenFromFile" width="300" height="300">
+            <div class="container">
+                <p><i>Taken from File</i></p>
+            </div>
+        </div>
+        <div class="col">
+            <img src="https://i.imgur.com/6gauVjc.jpg" alt="TakenFromLink" width="300" height="300">
+            <div class="container">
+                <p><i>Taken from Link</i></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottomright">
+        <script>
+            var loc = window.location.href;
+            var modified = document.lastModified;
+            document.write("Page URL: " + loc);
+            document.write("<br>Last Modified: " + modified);
+        </script>
+    </div>
+
+</body>
+
+</html>
