@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "includes/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +46,9 @@ include "config.php";
 				<!-- Navigation -->
 				<nav id="nav">
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a href="index.html">Home</a></li>
+						<li><a href="index.php">Home</a></li>
 						<li><a href="browsev2.php">Courses</a></li>
-						<li><a href="login.php">Sign in</a></li>
+						<li><a href="signupandlogin.php">Sign in</a></li>
 						<li><a href="#">About</a></li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
@@ -62,7 +62,7 @@ include "config.php";
 		.delta{
 			background-color: black;
 		}
-		.nav a{
+		#nav a{
 			color: white;
 		}
 	</style>

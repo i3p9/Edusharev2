@@ -1,7 +1,7 @@
 <html>
     <link rel="stylesheet" href="css/footerstyle.css">
     <link rel="stylesheet" href="css/pagestyle.css">
-<footer class="ht-footer" style="background: black; color: white">
+    <footer class="ht-footer" style="background: black; color: white">
 	<div class="container">
 		<div class="flex-parent-ft">
 			<div class="flex-child-ft item1">
