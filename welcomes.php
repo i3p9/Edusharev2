@@ -1,8 +1,7 @@
 <?php
-session_start();
- 
+include "header2.php";
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: signupandlogin.php");
     exit;
 }
 ?>
@@ -26,10 +25,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <p>
     <div class="profile">
     <a href="browsev2.php" class="btn btn-primary">Browse available courses</a>
-    <a href="appointmentv2.php" class="btn btn-primary">Make appointment with a teacher</a>
+    <a href="myclasses.php" class="btn btn-primary">My Classes</a>
     <a href="profile.php" class="btn btn-primary">Your account</a>
     <a href="editprofiles.php" class="btn btn-primary">Edit profile</a>
     <a href="applyasteacher.php" class="btn btn-primary">Apply to be an Educator at EduShare</a>
+    <a href="applyasteacher.php" class="btn btn-primary">Private Tutors</a>
+    <a href="submitcourse.php" class="btn btn-primary">Create a Classroom</a>
     </div>
     </p>
 <p>
@@ -37,4 +38,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
 </body>
+<footer>
+	<?php include "footer.php"; ?>
+</footer>
 </html>

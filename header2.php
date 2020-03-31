@@ -1,5 +1,12 @@
 <?php
+session_start();
 include "includes/config.php";
+if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
+    $homepage="welcomes.php";
+} else {
+	$homepage="index.php";
+} 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +37,7 @@ include "includes/config.php";
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="index.html">
+						<a class="logo" href="<?php echo $homepage; ?>">
 							<img src="img/edusharelogo.png" alt="logo">
 						</a>
 					</div>
@@ -46,7 +53,7 @@ include "includes/config.php";
 				<!-- Navigation -->
 				<nav id="nav">
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a href="index.php">Home</a></li>
+						<li><a href="<?php echo $homepage; ?>">Home</a></li>
 						<li><a href="browsev2.php">Courses</a></li>
 						<li><a href="signupandlogin.php">Sign in</a></li>
 						<li><a href="#">About</a></li>

@@ -26,10 +26,11 @@ include "header.php";
         </div>
 
         <form id="login" class="input-group" style="top:220px" action="includes/login.php" method="POST">
-            <input type="text" name="userinput" class="input-field" placeholder="User Name or Email" required >
-            <input type="password" name="password" class="input-field" placeholder="Password" required >
-            <input type="checkbox" class="check-box"><span> Remember password</span>
-            <button type="submit" name="login-submit" class="submit-btn" style="margin-top: 20px;">Log In</button>
+            <input type="text" id="uInput" name="userinput" class="input-field" placeholder="User Name or Email" required >
+            <input type="password" id="uPass" name="password" class="input-field" placeholder="Password" required >
+            <input type="checkbox" name="remember" class="check-box"><span> Remember password</span>
+            <button type="submit" name="login-submit" class="submit-btn" style="margin-top: 20px; margin-bottom: 20px">Log In</button>
+            <p>Cannot remember password? <a href="#">Click Here.</a></p>
         </form>
 
 

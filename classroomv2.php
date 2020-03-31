@@ -1,6 +1,25 @@
 <?php
 require "header2.php";
 $course = $_GET["course"];
+if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
+  $username=$_SESSION['username'];
+  $sql = "SELECT * FROM students WHERE name=? AND username=?";
+  $stmt=mysqli_stmt_init($link);
+  if(!mysqli_stmt_prepare($stmt, $sql)) {
+    header("location: classroomv2.php?course=$course&error=sqlerror");
+    exit();
+  } else {
+    mysqli_stmt_bind_param($stmt, "ss", $course, $username);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+    $resultCheck=mysqli_stmt_num_rows($stmt);
+    if($resultCheck>0) {
+      header("location: classroommain.php?course=$course");
+      exit();
+    }
+  }
+}
+
 
 $sql = "SELECT * FROM course";
 $result = $link->query($sql);
@@ -16,6 +35,10 @@ if ($result->num_rows > 0) {
           $link = $row["filelink"];    
         }
     }
+}
+if($teacher==$_SESSION['username']) {
+  header("location: classroommain.php?course=$course");
+  exit();
 }
 
 ?>
@@ -36,15 +59,6 @@ if ($result->num_rows > 0) {
 <h2 style="margin: 50px;"><?php echo $course; ?>Classroom</h2>
 
 <div class="bs-docs-example">
-    <ul id="myTab" class="nav nav-tabs">
-        <li class="active"><a href="#cse" data-toggle="tab">Description</a>
-        </li>
-        <li><a href="#eee" data-toggle="tab">Live Class</a>
-        </li>
-        <li><a href="#other" data-toggle="tab">Files</a>
-        </li>
-    </ul>
-    
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active" id="cse">
           <div align="center" id="wrapper">
@@ -58,12 +72,11 @@ if ($result->num_rows > 0) {
               Instructor: <?php echo $teacher; ?>
             </h1>
             <h1 align="left" style="font-size:160%;">
-              Prerequisites
+              What you will learn?
             </h1>
-            <p align="justify" style="font-size:120%;">
-              <?php echo $pre; ?>    
-            </p>
-            <input type="submit" id="joinclass" name="joinclass" value="Enroll Now">
+            <form action="<?php echo "joinclass.php?course=$course"; ?>" method=POST>
+              <button id="joinclass" type="submit" name="joinclass">Enroll Now</button>
+            </form>
           </div>
         </div>
         <div class="tab-pane fade" id="eee">
@@ -122,7 +135,7 @@ iframe {
   background-color: orange;
   border-color: black;
   font-weight: bold;
-  margin: 5%;
+  margin:5%;
 }
 </style>
 </html>

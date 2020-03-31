@@ -25,9 +25,9 @@ if(isset($_POST['login-submit'])) {
                 } else if($pwdCheck==true) {
                     session_start();
                     $_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $id;
-                    $_SESSION["username"] = $username;
-                    $_SESSION["usermail"] = $usermail;
+                    $_SESSION["id"] = $rows['id'];
+                    $_SESSION["username"] = $rows['username'];
+                    $_SESSION["usermail"] = $rows['usermail'];
                     header("Location:../welcomes.php");
                     exit();
                 } else {

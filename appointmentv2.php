@@ -1,22 +1,16 @@
     <?php
 
 session_start();
+include "includes/config.php";
  
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
 
-$hostname = "localhost";
-$username = "root";
-$password = "";
-$databaseName = "testsite";
-
-$connect = mysqli_connect($hostname, $username, $password, $databaseName);
-
 $query = "SELECT  uname,fullname FROM info_teacher";
 
-$result = mysqli_query($connect, $query);
+$result = mysqli_query($link, $query);
 //$unique = array_unique($result);
 
 $options = "";
@@ -73,6 +67,5 @@ while($row = mysqli_fetch_array($result))
             </div>
     </form>
     </div>
-    <?php require "config.php"?>
     </body>
     </html>
