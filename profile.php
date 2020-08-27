@@ -113,5 +113,6 @@ while($row = mysqli_fetch_array($result3)) {
     <h3>major: <?php echo $major; ?> </h3>
     <h3>Short Bio: <?php echo $bio; ?> </h3>
     </div>
+    <a href="editprofiles.php" class="btn btn-primary">Edit Profile</a>
 </body>
 </html>

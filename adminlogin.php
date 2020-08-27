@@ -1,96 +1,64 @@
-<?php
-session_start();
- 
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-  header("location: adminhome.php");
-  exit;
-}
- 
-require_once "config.php";
- 
-$username = $password = "";
-$username_err = $password_err = "";
- 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
-    if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
-    } else{
-        $username = trim($_POST["username"]);
-    }
-    
-    if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
-    } else{
-        $password = trim($_POST["password"]);
-    }
-    
-    if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, username, password FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            $param_username = $username;
-            if(mysqli_stmt_execute($stmt)){
-                mysqli_stmt_store_result($stmt);
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
-                            session_start();                            
-                            $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            header("location: adminhome.php");
-                        } else{
-                            $password_err = "The password you entered was not valid.";
-                        }
-                    }
-                } else{
-                    $username_err = "No account found with that username.";
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }       
-        mysqli_stmt_close($stmt);
-    }    
-    mysqli_close($link);
-}
-?>
- 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <link rel="stylesheet" href="style.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+    <title> LogIn & Sign Up </title>
+    <link rel="stylesheet" href="css/signuploginstyle.css">
 </head>
+
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Enter admin uname and password</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
+
+    <div class="toggleChange">
+        <div class="form-box">
+            
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()"> Log In</button>
+                <button type="button" class="toggle-btn" onclick="signup()"> Sign Up</button>        
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Not an admin? <a href="login.php">Click here</a> to login to your student/teacher portal.</p>
+
+        <form id="login" class="input-group" style="top:220px" action="admin/login.php" method="POST">
+            
+            <input type="text" id="uInput" name="userinput" class="input-field" placeholder="User Name or Email" required >
+            
+            <input type="password" id="uPass" name="password" class="input-field" placeholder="Password" required >
+            
+            <button type="submit" name="login-submit" class="submit-btn" style="margin-top: 20px; margin-bottom: 20px">Log In</button>
         </form>
-    </div>    
+
+
+        <form id="signup" class="input-group" action="admin/register.php" method="POST">
+            <input type="text" name="username" class="input-field" placeholder="Unique Username" required >
+
+            <input type="email" name="usermail" class="input-field" placeholder="Email" required >
+
+            <input type="password" class="input-field" name="password" placeholder="Password" minlength="6" required >
+
+            <input type="password" name="repeat_password" class="input-field" placeholder="Repeat Password" required >
+
+            <input type="password" name="adminverify" class="input-field" placeholder="Admin Sign up Code" required >
+
+            <button type="submit" name="signup-submit" class="submit-btn" style="margin-top: 20px;">Sign Up</button>
+        </form>
+        </div>
+    </div>
+</body>
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("signup");
+        var z = document.getElementById("btn");
+        function signup(){
+            x.style.left = "-400px"
+            y.style.left = "50px"
+            z.style.left = "110px"
+        }
+        function login(){
+            x.style.left = "50px"
+            y.style.left = "450px"
+            z.style.left = "0px"
+        }
+
+    </script>
 </body>
 </html>

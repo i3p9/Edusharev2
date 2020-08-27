@@ -1,17 +1,3 @@
-<?php
-session_start();
-include "includes/config.php";
-if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
-    $homepage="welcomes.php";
-    $idval=$_SESSION["username"];
-    $idlink="profile.php";
-} else {
-	$homepage="index.php";
-	$idval="Sign in";
-    $idlink="signupandlogin.php";
-} 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -26,13 +12,13 @@ if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
 		<link href="https://fonts.googleapis.com/css?family=Lato:700%7CMontserrat:400,600" rel="stylesheet">
 
 		<!-- Bootstrap -->
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
 
 		<!-- Font Awesome Icon -->
-		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="../css/font-awesome.min.css">
 
 		<!-- Custom stlylesheet -->
-		<link type="text/css" rel="stylesheet" href="css/style.css"/>
+		<link type="text/css" rel="stylesheet" href="../css/style.css"/>
 	</head>
 	<body>
 		<!-- Header -->
@@ -41,8 +27,8 @@ if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
 				<div class="navbar-header">
 					<!-- Logo -->
 					<div class="navbar-brand">
-						<a class="logo" href="<?php echo $homepage; ?>">
-							<img src="img/edusharelogo.png" alt="logo">
+						<a class="logo" href="adminhome.php">
+							<img src="../img/edusharelogo.png" alt="logo">
 						</a>
 					</div>
 					<!-- /Logo -->
@@ -57,10 +43,8 @@ if(isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] === true){
 				<!-- Navigation -->
 				<nav id="nav">
 					<ul class="main-menu nav navbar-nav navbar-right">
-						<li><a href="<?php echo $homepage; ?>">Home</a></li>
-						<li><a href="browsev2.php">Courses</a></li>
-						<li><a href="<?php echo $idlink ?>"><?php echo $idval ?></a></li>
-						<li><a href="#">About</a></li>
+						<li><a href="adminhome.php">Home</a></li>
+						<li><a href="#"></a>Something</li>
 						<li><a href="contact.html">Contact</a></li>
 					</ul>
 				</nav>

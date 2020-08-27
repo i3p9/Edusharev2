@@ -24,6 +24,7 @@
     <a href="submitcourse.php" class="btn btn-primary">Submit courses</a>
     <a href="checkapt.php" class="btn btn-primary">Check your appointments</a>
     <a href="profilet.php" class="btn btn-primary">Your account</a>
+    <a href="submitcourse.php" class="btn btn-primary">Create a Classroom</a>
     <a href="editprofilet.php" class="btn btn-primary">Edit profile</a>
     </div>
     </p>

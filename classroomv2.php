@@ -30,12 +30,23 @@ if ($result->num_rows > 0) {
           $teacher = $row["teacher"];
           $coursetype = $row["coursetype"];
           $appointment = $row["appointment"];
-          $des = $row["longdes"];
-          $pre = $row["prereq"];
-          $link = $row["filelink"];    
+          $des = $row["longdes"]; 
+          $cTime=$row['timings'];
+          $schedule=$row['schedule'];
+          $sdate=$row['startdate'];
+          $edate=$row['enddate'];  
         }
     }
 }
+$days=explode("/", $schedule, 2);
+    if($days[0]=="S") { $schedule2= "Sunday and Tuesday"; }
+      else if($days[0]=="S") {$schedule2= "Sunday and Tuesday";}
+      else if($days[0]=="M") {$schedule2= "Monday and Wednesday";}
+      else if($days[0]=="T") {$schedule2= "Tuesday and Thursday";}
+      else if($days[0]=="W") {$schedule2= "Wednesday and Friday";}
+      else if($days[0]=="Thu") {$schedule2= "Thursday and Saturday";}
+      else if($days[0]=="F") {$schedule2= "Friday and Sunday";}
+      else if($days[0]=="Sat") {$schedule2= "Saturday and Monday";}
 if($teacher==$_SESSION['username']) {
   header("location: classroommain.php?course=$course");
   exit();
@@ -74,6 +85,8 @@ if($teacher==$_SESSION['username']) {
             <h1 align="left" style="font-size:160%;">
               What you will learn?
             </h1>
+            <p> Class Will Take Place every <?php echo $schedule2; ?> at <?php echo $cTime; ?> </p>
+    <p>Course will continue from <?php echo $sdate; ?> up until <?php echo $edate; ?></p>
             <form action="<?php echo "joinclass.php?course=$course"; ?>" method=POST>
               <button id="joinclass" type="submit" name="joinclass">Enroll Now</button>
             </form>
@@ -85,16 +98,7 @@ if($teacher==$_SESSION['username']) {
 </div>
         </div>
 
-    
-    <div class="tab-pane fade" id="other" align="center">
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#lecture1" role="button" aria-expanded="false" aria-controls="lecture1"> Open Course File</a>
-    </p>
-        <div class="collapse" id="lecture1">
-            <div class="card card-body">
-            <object data="<?php echo $link; ?>" type="application/pdf" width="100%" height="800px"> </object>
-            </div>
-        </div>
+  
         </div>
     </div>
     <div class="tab-pane fade" id="chat">
