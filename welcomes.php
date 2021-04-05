@@ -27,6 +27,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <a href="browsev2.php" class="btn btn-primary">Browse available courses</a>
     <a href="myclasses.php" class="btn btn-primary">My Classes</a>
     <a href="profile.php" class="btn btn-primary">Your account</a>
+    <a href="privatetutors.php" class="btn btn-primary">Private Tutors</a>
+    <a href="submitcourse.php" class="btn btn-primary">Create a Classroom</a>
     </div>
     </p>
 <p>
